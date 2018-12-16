@@ -1,0 +1,25 @@
+<?xml version='1.0'?>
+<config
+	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xsi:noNamespaceSchemaLocation='urn:magento:framework:ObjectManager/etc/config.xsd'
+>
+	<type name='Magento\Checkout\Model\CompositeConfigProvider'>
+		<arguments>
+			<argument name='configProviders' xsi:type='array'>
+				<item name='dfe_vantiv' xsi:type='object'>Dfe\Vantiv\ConfigProvider</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name='Magento\Payment\Model\CcGenericConfigProvider'>
+		<arguments>
+			<argument name='methodCodes' xsi:type='array'>
+				<item name='dfe_vantiv' xsi:type='string'>dfe_vantiv</item>
+			</argument>
+		</arguments>
+	</type>
+	<virtualType name='Dfe\Vantiv\ConfigProvider' type='Df\StripeClone\ConfigProvider'>
+		<arguments><argument name='module' xsi:type='string'>Dfe_Vantiv</argument></arguments>
+	</virtualType>		
+	<virtualType name='Dfe\Vantiv\Controller\Index\Index' type='Df\Payment\W\Action'/>
+	<virtualType name='Dfe\Vantiv\W\Nav' type='Df\StripeClone\W\Nav'/>
+</config>
