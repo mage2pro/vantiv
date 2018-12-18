@@ -26,10 +26,10 @@ final class Charge extends \Dfe\Vantiv\T\CaseT {
 	/** 2018-12-18 */
 	function t04() {echo $this->doc();}
 
-	/** @test 2018-12-18 */
+	/** 2018-12-18 */
 	function t05() {echo df_json_encode(F::s()->post($this->docBody())->a());}
 
-	/** 2018-12-19 */
+	/** @test 2018-12-19 */
 	function t06() {echo df_json_encode(F::s()->post($this->docBody('failure'))->a());}
 
 	/**

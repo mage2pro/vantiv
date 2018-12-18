@@ -1,6 +1,6 @@
 {
 	"name": "mage2pro/vantiv"
-	,"version": "0.0.4"
+	,"version": "0.0.5"
 	,"description": "Vantiv integration with Magento 2"
 	,"type": "magento2-module"
 	,"homepage": "https://mage2.pro/c/extensions/vantiv"
