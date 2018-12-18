@@ -8,7 +8,6 @@
 			<vantiv>
 				<action>authorize_capture</action>
 				<description>{store.domain} // {customer.name} // {order.id}</description>
-				<environment>pre_live</environment>
 				<requireBillingAddress>0</requireBillingAddress>
 				<title>Vantiv</title>
 				<title_backend>Vantiv</title_backend>

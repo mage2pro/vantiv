@@ -1,6 +1,7 @@
 <?php
 namespace Dfe\Vantiv\T\CaseT;
 use Df\Payment\BankCardNetworkDetector as D;
+use Df\Xml\G;
 // 2018-12-17
 final class Charge extends \Dfe\Vantiv\T\CaseT {
 	/** 2018-12-17 */
@@ -13,8 +14,16 @@ final class Charge extends \Dfe\Vantiv\T\CaseT {
 
 	/** @test 2018-12-18 */
 	function t02() {echo $this->curl(
-		$this->req('test'), 'https://payments.vantivprelive.com/vap/communicator/online'
+		$this->doc(), 'https://payments.vantivprelive.com/vap/communicator/online'
 	);}
+
+	/** 2018-12-18 */
+	function t03() {$s = $this->s(); echo df_json_encode([
+		'merchantID' => $s->merchantID(), 'privateKey' => $s->privateKey(), 'publicKey' => $s->publicKey()
+	]);}
+
+	/** 2018-12-18 */
+	function t04() {echo $this->doc();}
 
 	/**
 	 * 2018-12-18
@@ -38,15 +47,73 @@ final class Charge extends \Dfe\Vantiv\T\CaseT {
 		return curl_exec($ch);
 	}
 
+	/** 2018-12-18 */
+	private function doc() {
+		$card = $this->j("test/card");
+		$s = $this->s();
+		$oid = df_uid(10);
+		return df_xml_g('litleOnlineRequest', [
+			'authentication' => ['user' => $s->publicKey(), 'password' => $s->privateKey()]
+			,df_xml_node('authorization'
+				,['customerId' => 'admin@mage2.pro', 'reportGroup' => $s->merchantID()]
+				,[
+					'orderId' => $oid
+					,'amount' => 1
+					,'orderSource' => 'ecommerce'
+					,'billToAddress' => [
+						'addressLine1' => '49 West 32nd Street'
+						,'city' => 'New York City'
+						,'companyName' => 'Mage2.PRO'
+						,'country' => 'US'
+						,'firstName' => 'Dmitry'
+						,'lastName' => 'Fedyuk'
+						,'phone' => '+1 (212) 736-3800'
+						,'state' => 'New York'
+						,'zip' => '10001'
+					]
+					,'card' => [
+						'type' => self::type(D::p($card['num']))
+						,'number' => $card['num']
+						,'expDate' => $card['exp']
+						,'cardValidationNum' => $card['cvc']
+					]
+					,'cardholderAuthentication' => ['customerIpAddress' => '127.0.0.1']
+					,'customBilling' => ['url' => 'localhost']
+					,'enhancedData' => [
+						'salesTax' => 0
+						,'discountAmount' => 0
+						,'shippingAmount' => 0
+						,'destinationPostalCode' => '10001'
+						,'destinationCountryCode' => 'US'
+						,'orderDate' => '2018-12-17'
+						,'detailTax' => ['taxAmount' => 0]
+						,'lineItemData' => [
+							'itemSequenceNumber' => 1
+							,'itemDescription' => 'Test'
+							,'productCode' => 364
+							,'quantity' => 1
+							,'lineItemTotal' => 1
+							,'unitCost' => 1
+						]
+
+					]
+				]
+			)
+		], [G::P__ATTRIBUTES => [
+			'merchantId' => $s->merchantID()
+			,'merchantSdk' => 'Magento;8.15.6'
+			,'version' => '8.23'
+			,'xmlns' => 'http://www.litle.com/schema'
+		]]);
+	}
+
 	/**
 	 * 2018-12-18
 	 * @used-by req()
 	 * @param string $path
 	 * @return array(string => string)
 	 */
-	private function j($path) {return df_json_decode(file_get_contents(
-		BP . "/_my/test/Vantiv/$path.json"
-	));}
+	private function j($path) {return df_json_decode(file_get_contents(BP . "/_my/test/Vantiv/$path.json"));}
 
 	/**
 	 * 2018-12-18
@@ -73,8 +140,8 @@ final class Charge extends \Dfe\Vantiv\T\CaseT {
 			,'%order%' => df_uid(8)
 			,'%privateKey%' => $cred['privateKey']
 			,'%publicKey%' => $cred['publicKey']
-		])
-	;}
+		]);
+	}
 
 	/**
 	 * 2018-12-18

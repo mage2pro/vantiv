@@ -41,23 +41,9 @@ So the `sortOrder` value is 1920. -->
 					<comment><![CDATA[Enable the «<a href='https://mage2.pro/c/extensions/vantiv' target='_blank'>Vantiv</a>» payment extension?]]></comment>
 				</field>
 				<field
-					id='environment'
-					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='2'
-					translate='label'
-					type='select'
-				>
-					<label>Environment</label>
-					<source_model>Dfe\Vantiv\Source\Environment</source_model>
-					<comment><![CDATA[]]></comment>
-					<depends>
-						<field id='enable'>1</field>
-					</depends>
-				</field>
-				<field
 					id='title'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='3'
+					sortOrder='2'
 					translate='label'
 					type='text'
 				>
@@ -67,29 +53,47 @@ So the `sortOrder` value is 1920. -->
 					<validate>required-entry</validate>
 				</field>
 				<field
-					id='merchantID'
+					id='test'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='3'
+					translate='label'
+					type='Df\Framework\Form\Element\Checkbox'
+				>
+					<label>Pre-Live Environment?</label>
+					<backend_model>Df\Config\Backend\Checkbox</backend_model>
+					<comment><![CDATA[<a href='http://vantiv-ecommerce.github.io/sandbox/#howItWorks' target='_blank'>test bank cards</a>]]></comment>
+					<depends><field id='enable'>1</field></depends>
+				</field>
+				<field
+					id='testMerchantID'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='4'
 					translate='label'
 					type='text'
 				>
 					<label>Merchant ID</label>
-					<depends><field id='enable'>1</field></depends>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='test'>1</field>
+					</depends>
 					<validate>required-entry validate-digits</validate>
 				</field>
 				<field
-					id='publicKey'
+					id='testPublicKey'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='5'
 					translate='label'
 					type='text'
 				>
 					<label>Username</label>
-					<depends><field id='enable'>1</field></depends>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='test'>1</field>
+					</depends>
 					<validate>required-entry</validate>
 				</field>
 				<field
-					id='privateKey'
+					id='testPrivateKey'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='6'
 					translate='label'
@@ -99,13 +103,57 @@ So the `sortOrder` value is 1920. -->
 					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
 					<depends>
 						<field id='enable'>1</field>
+						<field id='test'>1</field>
+					</depends>
+					<validate>required-entry</validate>
+				</field>
+				<field
+					id='liveMerchantID'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='7'
+					translate='label'
+					type='text'
+				>
+					<label>Merchant ID</label>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='test'>0</field>
+					</depends>
+					<validate>required-entry validate-digits</validate>
+				</field>
+				<field
+					id='livePublicKey'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='8'
+					translate='label'
+					type='text'
+				>
+					<label>Username</label>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='test'>0</field>
+					</depends>
+					<validate>required-entry</validate>
+				</field>
+				<field
+					id='livePrivateKey'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='9'
+					translate='label'
+					type='obscure'
+				>
+					<label>Password</label>
+					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='test'>0</field>
 					</depends>
 					<validate>required-entry</validate>
 				</field>
 				<field
 					id='action'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='7'
+					sortOrder='10'
 					translate='label'
 					type='select'
 				>
@@ -119,7 +167,7 @@ So the `sortOrder` value is 1920. -->
 				<field
 					id='description'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='8'
+					sortOrder='11'
 					translate='label'
 					type='textarea'
 				>
@@ -136,7 +184,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='min_order_total'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='9'
+					sortOrder='12'
 					translate='label'
 					type='text'
 				>
@@ -148,7 +196,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='max_order_total'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='10'
+					sortOrder='13'
 					translate='label'
 					type='text'
 				>
@@ -160,7 +208,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='country_restriction'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='11'
+					sortOrder='14'
 					translate='label'
 					type='select'
 				>
@@ -171,7 +219,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='countries'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='12'
+					sortOrder='15'
 					translate='label'
 					type='Df\Framework\Form\Element\Multiselect'
 				>
