@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litleOnlineRequest merchantId="%merchantID%" version="8.23" merchantSdk="Magento;8.15.6"
+					xmlns="http://www.litle.com/schema">
+	<authentication>
+		<user>%publicKey%</user>
+		<password>%privateKey%</password>
+	</authentication>
+	<authorization customerId="admin@mage2.pro" reportGroup="%merchantID%" id="%order%">
+		<orderId>%order%</orderId>
+		<amount>1</amount>
+		<orderSource>ecommerce</orderSource>
+		<billToAddress>
+			<firstName>Dmitry</firstName>
+			<lastName>Fedyuk</lastName>
+			<companyName>Mage2.PRO</companyName>
+			<addressLine1>49 West 32nd Street</addressLine1>
+			<city>New York City</city>
+			<state>New York</state>
+			<zip>10001</zip>
+			<country>US</country>
+			<phone>+1 (212) 736-3800</phone>
+		</billToAddress>
+		<card>
+			<type>%c_type%</type>
+			<number>%c_num%</number>
+			<expDate>%c_exp%</expDate>
+			<cardValidationNum>%c_cvc%</cardValidationNum>
+		</card>
+		<cardholderAuthentication>
+			<customerIpAddress>127.0.0.1</customerIpAddress>
+		</cardholderAuthentication>
+		<customBilling>
+			<url>localhost</url>
+		</customBilling>
+		<enhancedData>
+			<salesTax>0</salesTax>
+			<discountAmount>0</discountAmount>
+			<shippingAmount>0</shippingAmount>
+			<destinationPostalCode>10001</destinationPostalCode>
+			<destinationCountryCode>US</destinationCountryCode>
+			<orderDate>2018-12-17</orderDate>
+			<detailTax>
+				<taxAmount>0</taxAmount>
+			</detailTax>
+			<lineItemData>
+				<itemSequenceNumber>1</itemSequenceNumber>
+				<itemDescription>Test</itemDescription>
+				<productCode>364</productCode>
+				<quantity>1</quantity>
+				<lineItemTotal>1</lineItemTotal>
+				<unitCost>1</unitCost>
+			</lineItemData>
+		</enhancedData>
+	</authorization>
+</litleOnlineRequest>
