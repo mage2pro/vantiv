@@ -1,11 +1,12 @@
 <?php
 namespace Dfe\Vantiv\T\CaseT;
+use Df\Payment\BankCardNetworkDetector as D;
 // 2018-12-17
 final class Charge extends \Dfe\Vantiv\T\CaseT {
 	/** 2018-12-17 */
 	function t00() {echo __METHOD__;}
 
-	/** @test 2018-12-18 */
+	/** 2018-12-18 */
 	function t01() {
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_POST, true);
@@ -20,7 +21,7 @@ final class Charge extends \Dfe\Vantiv\T\CaseT {
 		echo curl_exec($ch);
 	}
 
-	/** 2018-12-18 */
+	/** @test 2018-12-18 */
 	function t02() {
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_POST, true);
@@ -56,7 +57,7 @@ final class Charge extends \Dfe\Vantiv\T\CaseT {
 			'%c_cvc%' => $card['cvc']
 			,'%c_exp%' => $card['exp']
 			,'%c_num%' => $card['num']
-			,'%c_type%' => $card['type']
+			,'%c_type%' => self::type(D::p($card['num']))
 			,'%merchantID%' => $cred['merchantID']
 			/**
 			 * 2018-12-18
@@ -69,4 +70,14 @@ final class Charge extends \Dfe\Vantiv\T\CaseT {
 			,'%publicKey%' => $cred['publicKey']
 		])
 	;}
+
+	/**
+	 * 2018-12-18
+	 * @used-by req()
+	 * @param string $t
+	 * @return string
+	 */
+	private function type($t) {return dftr($t, [
+		D::AE => 'AX', D::DN => 'DC', D::DS => 'DI', D::JC => 'JC', D::MC => 'MC', D::VI => 'VI'
+	]);}
 }
