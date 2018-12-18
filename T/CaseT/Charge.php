@@ -29,8 +29,11 @@ final class Charge extends \Dfe\Vantiv\T\CaseT {
 	/** 2018-12-18 */
 	function t05() {echo df_json_encode(F::s()->post($this->docBody())->a());}
 
-	/** @test 2018-12-19 */
+	/** 2018-12-19 */
 	function t06() {echo df_json_encode(F::s()->post($this->docBody('failure'))->a());}
+
+	/** @test 2018-12-18 */
+	function t07() {echo df_json_encode(F::s()->post($this->docBody('success', true))->a());}
 
 	/**
 	 * 2018-12-18
@@ -66,15 +69,16 @@ final class Charge extends \Dfe\Vantiv\T\CaseT {
 	 * 2018-12-18
 	 * @used-by doc()
 	 * @param string $type [optional]
+	 * @param bool $capture [optional]
 	 * @return array(string => mixed)
 	 */
-	private function docBody($type = 'success') {
+	private function docBody($type = 'success', $capture = false) {
 		$card = $this->j("test/card/$type");
 		$s = $this->s();
 		$oid = df_uid(10);
 		return [
 			'authentication' => ['user' => $s->publicKey(), 'password' => $s->privateKey()]
-			,df_xml_node('authorization'
+			,df_xml_node($capture ? 'sale' : 'authorization'
 				,['customerId' => 'admin@mage2.pro', 'reportGroup' => $s->merchantID()]
 				,[
 					'orderId' => $oid
