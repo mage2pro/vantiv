@@ -27,10 +27,10 @@ final class Charge extends \Dfe\Vantiv\T\CaseT {
 	function t04() {echo $this->doc();}
 
 	/** @test 2018-12-18 */
-	function t05() {
-		$r = F::s()->post($this->docBody());
-		xdebug_break();
-	}
+	function t05() {echo df_json_encode(F::s()->post($this->docBody())->a());}
+
+	/** 2018-12-19 */
+	function t06() {echo df_json_encode(F::s()->post($this->docBody('failure'))->a());}
 
 	/**
 	 * 2018-12-18
@@ -65,10 +65,11 @@ final class Charge extends \Dfe\Vantiv\T\CaseT {
 	/**
 	 * 2018-12-18
 	 * @used-by doc()
+	 * @param string $type [optional]
 	 * @return array(string => mixed)
 	 */
-	private function docBody() {
-		$card = $this->j("test/card");
+	private function docBody($type = 'success') {
+		$card = $this->j("test/card/$type");
 		$s = $this->s();
 		$oid = df_uid(10);
 		return [
