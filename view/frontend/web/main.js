@@ -15,12 +15,12 @@ return parent.extend({
 	 * @see Dfe_StripeClone/main::dfData()
 	 * @returns {Object}
 	 */
-	dfData: function() {return _.assign(this._super(), {
+	dfData: function() {return {
 		c_cvc: this.creditCardVerificationNumber()
 		,c_exp_month: this.creditCardExpMonth2()
 		,c_exp_year: this.creditCardExpYear2()
 		,c_number: this.creditCardNumber()
-	});},
+	};},
 	/**
 	 * 2018-12-17
 	 * @override
@@ -29,4 +29,25 @@ return parent.extend({
 	 * @returns {String[]}
 	 */
 	getCardTypes: function() {return ['VI', 'MC', 'AE', 'DI'];},
+    /**
+	 * 2018-12-18
+	 * @override
+	 * @see Df_StripeClone/main::tokenCheckStatus()
+	 * https://github.com/mage2pro/core/blob/2.7.9/StripeClone/view/frontend/web/main.js?ts=4#L8-L15
+	 * @used-by Df_StripeClone/main::placeOrder()
+	 * https://github.com/mage2pro/core/blob/2.7.9/StripeClone/view/frontend/web/main.js?ts=4#L75
+	 * @param {Boolean} status
+	 * @returns {Boolean}
+	 */
+	tokenCheckStatus: function(status) {return status;},
+	/**
+	 * 2018-12-18
+	 * @override
+	 * @see https://github.com/mage2pro/core/blob/2.0.11/StripeClone/view/frontend/web/main.js?ts=4#L21-L29
+	 * @used-by Df_StripeClone/main::placeOrder()
+	 * https://github.com/mage2pro/core/blob/2.7.9/StripeClone/view/frontend/web/main.js?ts=4#L73
+	 * @param {Object} params
+	 * @param {Function} callback
+	 */
+	tokenCreate: function(params, callback) {callback(true, {});},
 });});
