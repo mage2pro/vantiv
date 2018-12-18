@@ -2,6 +2,7 @@
 namespace Dfe\Vantiv\T\CaseT;
 use Df\Payment\BankCardNetworkDetector as D;
 use Df\Xml\G;
+use Dfe\Vantiv\API\Facade as F;
 // 2018-12-17
 final class Charge extends \Dfe\Vantiv\T\CaseT {
 	/** 2018-12-17 */
@@ -12,7 +13,7 @@ final class Charge extends \Dfe\Vantiv\T\CaseT {
 		$this->req('live'), 'https://payments.vantivcnp.com/vap/communicator/online'
 	);}
 
-	/** @test 2018-12-18 */
+	/** 2018-12-18 */
 	function t02() {echo $this->curl(
 		$this->doc(), 'https://payments.vantivprelive.com/vap/communicator/online'
 	);}
@@ -25,6 +26,12 @@ final class Charge extends \Dfe\Vantiv\T\CaseT {
 	/** 2018-12-18 */
 	function t04() {echo $this->doc();}
 
+	/** @test 2018-12-18 */
+	function t05() {
+		$r = F::s()->post($this->docBody());
+		xdebug_break();
+	}
+
 	/**
 	 * 2018-12-18
 	 * @used-by t01()
@@ -36,23 +43,35 @@ final class Charge extends \Dfe\Vantiv\T\CaseT {
 	private function curl($req, $url) {
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_POST, true);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: text/xml','Expect: '));
+		curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-type: text/xml','Expect: ']);
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $req);
 		curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, true);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_SSLVERSION, 6);
+		curl_setopt($ch, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1_2);
 		return curl_exec($ch);
 	}
 
 	/** 2018-12-18 */
-	private function doc() {
+	private function doc() {return df_xml_g('litleOnlineRequest', $this->docBody(), [G::P__ATTRIBUTES => [
+		'merchantId' => $this->s()->merchantID()
+		,'merchantSdk' => 'Magento;8.15.6'
+		,'version' => '8.23'
+		,'xmlns' => 'http://www.litle.com/schema'
+	]]);}
+
+	/**
+	 * 2018-12-18
+	 * @used-by doc()
+	 * @return array(string => mixed)
+	 */
+	private function docBody() {
 		$card = $this->j("test/card");
 		$s = $this->s();
 		$oid = df_uid(10);
-		return df_xml_g('litleOnlineRequest', [
+		return [
 			'authentication' => ['user' => $s->publicKey(), 'password' => $s->privateKey()]
 			,df_xml_node('authorization'
 				,['customerId' => 'admin@mage2.pro', 'reportGroup' => $s->merchantID()]
@@ -99,12 +118,7 @@ final class Charge extends \Dfe\Vantiv\T\CaseT {
 					]
 				]
 			)
-		], [G::P__ATTRIBUTES => [
-			'merchantId' => $s->merchantID()
-			,'merchantSdk' => 'Magento;8.15.6'
-			,'version' => '8.23'
-			,'xmlns' => 'http://www.litle.com/schema'
-		]]);
+		];
 	}
 
 	/**

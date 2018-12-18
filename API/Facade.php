@@ -6,15 +6,6 @@ use Df\Core\Exception as DFE;
 final class Facade extends \Df\API\Facade {
 	/**
 	 * 2018-12-18
-	 * @param string $id
-	 * @return array(string => string)
-	 * @throws DFE
-	 */
-	function charge($id) {return $this->post([
-	])->a();}
-
-	/**
-	 * 2018-12-18
 	 * @override
 	 * @see \Df\API\Facade::path()
 	 * @used-by \Df\API\Facade::p()
