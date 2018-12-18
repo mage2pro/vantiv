@@ -7,37 +7,40 @@ final class Charge extends \Dfe\Vantiv\T\CaseT {
 	function t00() {echo __METHOD__;}
 
 	/** 2018-12-18 */
-	function t01() {
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_POST, true);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: text/xml','Expect: '));
-		curl_setopt($ch, CURLOPT_URL, 'https://payments.vantivcnp.com/vap/communicator/online');
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $this->req('live'));
-		curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, true);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_SSLVERSION, 6);
-		echo curl_exec($ch);
-	}
+	function t01() {echo $this->curl(
+		$this->req('live'), 'https://payments.vantivcnp.com/vap/communicator/online'
+	);}
 
 	/** @test 2018-12-18 */
-	function t02() {
+	function t02() {echo $this->curl(
+		$this->req('test'), 'https://payments.vantivprelive.com/vap/communicator/online'
+	);}
+
+	/**
+	 * 2018-12-18
+	 * @used-by t01()
+	 * @used-by t02()
+	 * @param string $req
+	 * @param string $url
+	 * @return string
+	 */
+	private function curl($req, $url) {
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_POST, true);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: text/xml','Expect: '));
-		curl_setopt($ch, CURLOPT_URL, 'https://payments.vantivprelive.com/vap/communicator/online');
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $this->req('test'));
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $req);
 		curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, true);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_SSLVERSION, 6);
-		echo curl_exec($ch);
+		return curl_exec($ch);
 	}
 
 	/**
 	 * 2018-12-18
+	 * @used-by req()
 	 * @param string $path
 	 * @return array(string => string)
 	 */
@@ -47,6 +50,8 @@ final class Charge extends \Dfe\Vantiv\T\CaseT {
 
 	/**
 	 * 2018-12-18
+	 * @used-by t01()
+	 * @used-by t02()
 	 * @param string $type
 	 * @return string
 	 */
