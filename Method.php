@@ -7,7 +7,9 @@ use Magento\Sales\Model\Order\Payment\Transaction as T;
 final class Method extends \Df\StripeClone\Method {
 	/**
 	 * 2018-12-19
+	 * @used-by \Dfe\Vantiv\Block\Info::card()
 	 * @used-by \Dfe\Vantiv\Charge::pCharge()
+	 * @used-by \Dfe\Vantiv\Facade\Charge::card()
 	 * @return Card
 	 */
 	function card() {return dfc($this, function() {return Card::create($this, $this->iia(

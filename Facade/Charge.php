@@ -1,6 +1,7 @@
 <?php
 namespace Dfe\Vantiv\Facade;
 use Df\API\Operation;
+use Df\Xml\X;
 use Dfe\Vantiv\API\Facade as F;
 // 2018-12-18
 /** @method \Dfe\Vantiv\Method m() */
@@ -20,6 +21,16 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	/**
 	 * 2018-12-19
 	 * @override
+	 * @see \Df\StripeClone\Facade\Charge::card()
+	 * @used-by \Df\StripeClone\Method::chargeNew()
+	 * @param object|array(string => mixed) $c
+	 * @return Card
+	 */
+	function card($c) {return $this->m()->card();}
+
+	/**
+	 * 2018-12-19
+	 * @override
 	 * @see \Df\StripeClone\Facade\Charge::create()
 	 * @used-by \Df\StripeClone\Method::chargeNew()
 	 * @param array(string => mixed) $p
@@ -28,14 +39,14 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	function create(array $p) {return F::s()->post($p);}
 
 	/**
-	 * 2018-12-18
+	 * 2018-12-19 A string like «82924704471941425»
 	 * @override
 	 * @see \Df\StripeClone\Facade\Charge::id()
 	 * @used-by \Df\StripeClone\Method::chargeNew()
 	 * @param Operation $c
 	 * @return string
 	 */
-	function id($c) {return null;}
+	function id($c) {return $c['litleTxnId'];}
 
 	/**
 	 * 2018-12-18

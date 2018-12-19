@@ -94,11 +94,12 @@ final class Card extends \Df\StripeClone\Facade\Card {
 	 * @see \Df\StripeClone\Facade\Card::last4()
 	 * @return string
 	 */
-	function last4() {return null;}
+	function last4() {return substr($this->number(), -4);}
 
 	/**
 	 * 2018-12-19
 	 * @used-by brandCode()
+	 * @used-by last4()
 	 * @used-by \Dfe\Vantiv\Charge::pCharge()
 	 * @return string
 	 */
