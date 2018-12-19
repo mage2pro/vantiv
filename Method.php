@@ -1,9 +1,19 @@
 <?php
 namespace Dfe\Vantiv;
+use Dfe\Vantiv\Facade\Card;
 use Magento\Sales\Model\Order\Payment\Transaction as T;
 // 2018-12-17
 /** @method Settings s() */
 final class Method extends \Df\StripeClone\Method {
+	/**
+	 * 2018-12-19
+	 * @used-by \Dfe\Vantiv\Charge::pCharge()
+	 * @return Card
+	 */
+	function card() {return dfc($this, function() {return Card::create($this, $this->iia(
+		self::C_CVC, self::C_EXP_MONTH, self::C_EXP_YEAR, self::C_NUMBER
+	));});}
+
 	/**
 	 * 2018-12-17
 	 * @override
@@ -30,7 +40,7 @@ final class Method extends \Df\StripeClone\Method {
 	 * @used-by \Df\Payment\Method::assignData()
 	 * @return string[]
 	 */
-	protected function iiaKeys() {return [self::$C_CVC, self::$C_EXP_MONTH, self::$C_EXP_YEAR, self::$C_NUMBER];}
+	protected function iiaKeys() {return [self::C_CVC, self::C_EXP_MONTH, self::C_EXP_YEAR, self::C_NUMBER];}
 
 	/**
 	 * 2018-12-17
@@ -44,25 +54,33 @@ final class Method extends \Df\StripeClone\Method {
 
 	/**
 	 * 2018-12-17
+	 * @used-by card()
 	 * @used-by iiaKeys()
+	 * @used-by \Dfe\Vantiv\Facade\Card::cvc()
 	 */
-	private static $C_CVC = 'c_cvc';
+	const C_CVC = 'c_cvc';
 
 	/**
 	 * 2018-12-17
+	 * @used-by card()
 	 * @used-by iiaKeys()
+	 * @used-by \Dfe\Vantiv\Facade\Card::expMonth()
 	 */
-	private static $C_EXP_MONTH = 'c_exp_month';
+	const C_EXP_MONTH = 'c_exp_month';
 
 	/**
 	 * 2018-12-17
+	 * @used-by card()
 	 * @used-by iiaKeys()
+	 * @used-by \Dfe\Vantiv\Facade\Card::expYear()
 	 */
-	private static $C_EXP_YEAR = 'c_exp_year';
+	const C_EXP_YEAR = 'c_exp_year';
 
 	/**
 	 * 2018-12-17
+	 * @used-by card()
 	 * @used-by iiaKeys()
+	 * @used-by \Dfe\Vantiv\Facade\Card::number()
 	 */
-	private static $C_NUMBER = 'c_number';
+	const C_NUMBER = 'c_number';
 }
