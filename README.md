@@ -1,9 +1,5 @@
 This extension integrates a Magento 2 based webstore with the [Vantiv](https://www.vantiv.com) payment service).
 
-## How to buy
-The extension is not released yet, so there is no way to buy it just now.  
-The extension will be released when I will want so.
-
 ## How to install
 ### 1. Free installation service
 Just order my [free installation service](https://mage2.pro/t/3585).
@@ -30,11 +26,6 @@ rm -rf var/di var/generation generated/code && bin/magento setup:di:compile
 rm -rf pub/static/* && bin/magento setup:static-content:deploy en_US <additional locales, e.g.: de_DE>
 bin/magento maintenance:disable
 ```
-
-## Licensing
-It is a paid extension, not free.  
-You can use it for free for the testing puproses only.  
-Please read the [testing policy](https://mage2.pro/t/2590) before installation.
 
 ## Support
 - [The extension's **forum** branch](https://mage2.pro/c/extensions/tbc-bank).
