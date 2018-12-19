@@ -7,6 +7,7 @@
 		<df_payment>
 			<vantiv>
 				<action>authorize_capture</action>
+				<currency>USD</currency>
 				<description>{store.domain} // {customer.name} // {order.id}</description>
 				<requireBillingAddress>0</requireBillingAddress>
 				<title>Vantiv</title>

@@ -151,9 +151,19 @@ So the `sortOrder` value is 1920. -->
 					<validate>required-entry</validate>
 				</field>
 				<field
-					id='action'
+					id='currency'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='10'
+					translate='label'
+					type='Df\Directory\FE\Currency'
+				>
+					<label>Payment Currency</label>
+					<depends><field id='enable'>1</field></depends>
+				</field>
+				<field
+					id='action'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='11'
 					translate='label'
 					type='select'
 				>
@@ -167,7 +177,7 @@ So the `sortOrder` value is 1920. -->
 				<field
 					id='description'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='11'
+					sortOrder='12'
 					translate='label'
 					type='textarea'
 				>
@@ -184,7 +194,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='min_order_total'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='12'
+					sortOrder='13'
 					translate='label'
 					type='text'
 				>
@@ -196,7 +206,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='max_order_total'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='13'
+					sortOrder='14'
 					translate='label'
 					type='text'
 				>
@@ -208,7 +218,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='country_restriction'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='14'
+					sortOrder='15'
 					translate='label'
 					type='select'
 				>
@@ -219,7 +229,7 @@ because the value can contain variables, so do not know the real length here. --
 				<field
 					id='countries'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='15'
+					sortOrder='16'
 					translate='label'
 					type='Df\Framework\Form\Element\Multiselect'
 				>

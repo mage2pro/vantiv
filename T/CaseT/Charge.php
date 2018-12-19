@@ -75,14 +75,15 @@ final class Charge extends \Dfe\Vantiv\T\CaseT {
 	private function docBody($type = 'success', $capture = false) {
 		$card = $this->j("test/card/$type");
 		$s = $this->s();
-		$oid = df_uid(10);
+		$oid = 12345;//df_uid(10);
+		$liIndex = 1;
 		return [
 			'authentication' => ['user' => $s->publicKey(), 'password' => $s->privateKey()]
 			,df_xml_node($capture ? 'sale' : 'authorization'
 				,['customerId' => 'admin@mage2.pro', 'reportGroup' => $s->merchantID()]
 				,[
 					'orderId' => $oid
-					,'amount' => 1
+					,'amount' => 2
 					,'orderSource' => 'ecommerce'
 					,'billToAddress' => [
 						'addressLine1' => '49 West 32nd Street'
@@ -111,15 +112,14 @@ final class Charge extends \Dfe\Vantiv\T\CaseT {
 						,'destinationCountryCode' => 'US'
 						,'orderDate' => '2018-12-17'
 						,'detailTax' => ['taxAmount' => 0]
-						,'lineItemData' => [
-							'itemSequenceNumber' => 1
+						,'lineItemData' => array_map(function() use(&$liIndex) {return [
+							'itemSequenceNumber' => $liIndex++
 							,'itemDescription' => 'Test'
 							,'productCode' => 364
 							,'quantity' => 1
 							,'lineItemTotal' => 1
 							,'unitCost' => 1
-						]
-
+						];}, [1, 2])
 					]
 				]
 			)
