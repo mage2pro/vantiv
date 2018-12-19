@@ -150,12 +150,12 @@ final class Charge extends \Df\Payment\Charge {
 						// if detailTax is a child of enhancedData,
 						// or the taxAmount element if detailTax is a child of lineItemData.»
 						,'detailTax' => [
-							'taxAmount' => $this->cFromDocF($o->getTaxAmount())
 							// 2018-12-19
 							// «The taxIncludedInTotal element is an optional child of the detailTax element
 							// and defines whether or not the tax is included in the total purchase amount.
 							// Type = Boolean; Valid Values = true or false»
-							,'taxIncludedInTotal' => df_bts(dff_eq($o->getSubtotal(), $o->getSubtotalInclTax()))
+							'taxIncludedInTotal' => df_bts(dff_eq($o->getSubtotal(), $o->getSubtotalInclTax()))
+							,'taxAmount' => $this->cFromDocF($o->getTaxAmount())
 						]
 						// 2018-12-19
 						// «The lineItemData element contains several child elements
@@ -175,32 +175,6 @@ final class Charge extends \Df\Payment\Charge {
 							// which provides a brief text description of the item purchased.
 							// Type = String; minLength = N/A; maxLength = 26»
 							,'itemDescription' => df_chop($i->getName(), 26)
-							// 2018-12-19
-							// «The itemDiscountAmount element is an optional child of the lineItemData element,
-							// which specifies the item discount amount.
-							// Although an optional element,
-							// it is required by Visa for Level III Interchange rates.
-							// The value must be greater than or equal to 0.
-							// The decimal is implied. Example: 500 = $5.00.
-							// Type = Integer; totalDigits = 8»
-							,'itemDiscountAmount' => $this->cFromDocF($i->getDiscountAmount())
-							// 2018-12-19
-							// «The lineItemTotal element is an optional child of the lineItemData element,
-							// which specifies the total cost of the line items purchased, not including tax.
-							// For example, if the order was for 500 pencils at $1.00 each,
-							// the lineItemTotal would be $500.
-							// Although an optional element,
-							// it is required by Visa and MasterCard when specifying line item data.
-							// The decimal is implied. Example: 500 = $5.00.
-							// Type = Integer; totalDigits = 8»
-							,'lineItemTotal' => $this->cFromDocF(df_oqi_total($i))
-							// 2018-12-19
-							// «The lineItemTotalWithTax element is an optional child of the lineItemData element,
-							// which specifies the total cost of the line items purchased including tax.
-							// If the tax is not known, do not include this element.
-							// The decimal is implied. Example: 500 = $5.00.
-							// Type = Integer; totalDigits = 8»
-							,'lineItemTotalWithTax' => $this->cFromDocF(df_oqi_total($i, true))
 							// 2018-12-19
 							// «The productCode element is an optional child of the lineItemData element,
 							// which specifies the product code of the purchased item.
@@ -231,13 +205,39 @@ final class Charge extends \Df\Payment\Charge {
 							// from detailTax children.»
 							,'taxAmount' => $this->cFromDocF($i->getTaxAmount())
 							// 2018-12-19
+							// «The lineItemTotal element is an optional child of the lineItemData element,
+							// which specifies the total cost of the line items purchased, not including tax.
+							// For example, if the order was for 500 pencils at $1.00 each,
+							// the lineItemTotal would be $500.
+							// Although an optional element,
+							// it is required by Visa and MasterCard when specifying line item data.
+							// The decimal is implied. Example: 500 = $5.00.
+							// Type = Integer; totalDigits = 8»
+							,'lineItemTotal' => $this->cFromDocF(df_oqi_total($i))
+							// 2018-12-19
+							// «The lineItemTotalWithTax element is an optional child of the lineItemData element,
+							// which specifies the total cost of the line items purchased including tax.
+							// If the tax is not known, do not include this element.
+							// The decimal is implied. Example: 500 = $5.00.
+							// Type = Integer; totalDigits = 8»
+							,'lineItemTotalWithTax' => $this->cFromDocF(df_oqi_total($i, true))
+							// 2018-12-19
+							// «The itemDiscountAmount element is an optional child of the lineItemData element,
+							// which specifies the item discount amount.
+							// Although an optional element,
+							// it is required by Visa for Level III Interchange rates.
+							// The value must be greater than or equal to 0.
+							// The decimal is implied. Example: 500 = $5.00.
+							// Type = Integer; totalDigits = 8»
+							,'itemDiscountAmount' => $this->cFromDocF($i->getDiscountAmount())
+							// 2018-12-19
 							// «The unitCost element is an optional child of the lineItemData element,
 							// which specifies the price of one unit of the item purchased.
 							// Although the schema defines it as an optional child of the enhancedData element,
 							// it is required by Visa for Level III interchange rates.
 							// The value must be greater than or equal to 0.
 							// Type = Decimal; minInclusive value = 0, totalDigits = 12»
-							,'unitCost' => df_oqi_price($i)
+							,'unitCost' => $this->cFromDocF(df_oqi_price($i))
 						];}))
 					]
 				]
