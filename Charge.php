@@ -174,7 +174,10 @@ final class Charge extends \Df\Payment\Charge {
 							// «The itemDescription element is a required child of the lineItemData element,
 							// which provides a brief text description of the item purchased.
 							// Type = String; minLength = N/A; maxLength = 26»
-							,'itemDescription' => df_chop($i->getName(), 26)
+							// 2018-12-20
+							// We need to chop the string to 24 symbols,
+							// because Vantiv treats the … Unicode symbol as 3 symbols.
+							,'itemDescription' => df_chop($i->getName(), 24)
 							// 2018-12-19
 							// «The productCode element is an optional child of the lineItemData element,
 							// which specifies the product code of the purchased item.
