@@ -102,7 +102,8 @@ final class Charge extends \Df\Payment\Charge {
 						// «NOTE: Please consult your Relationship Manager prior to using the <url> element.
 						// The contents of this element are discarded
 						// unless Worldpay specifically enables the use it in your cnpAPI submissions.»
-						'url' => df_domain_current()
+						// 2018-12-20 It should be <= 13 characters
+						'url' => substr(df_domain_current(), 0, 13)
 					]
 					/**
 					 * 2018-12-19
