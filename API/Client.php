@@ -1,5 +1,6 @@
 <?php
 namespace Dfe\Vantiv\API;
+use Df\Payment\Settings\Proxy;
 use Df\Xml\G;
 use Dfe\Vantiv\Settings as S;
 // 2018-12-18
@@ -34,6 +35,19 @@ final class Client extends \Df\API\Client {
 	 * @return array(string => string)
 	 */
 	protected function headers() {return ['Content-Type' => 'text/xml'];}
+
+	/**
+	 * 2019-01-18
+	 * @override
+	 * @see \Df\API\Client::proxy()
+	 * @used-by \Df\API\Client::setup()
+	 * @return Proxy
+	 */
+	protected function proxy() {
+		$s = dfps($this); /** @var S $s */
+		$r = $s->proxy(); /** @var Proxy $r */
+		return !$r->enable() ? null : $r;
+	}
 
 	/**
 	 * 2018-12-18

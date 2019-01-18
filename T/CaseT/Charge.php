@@ -13,7 +13,7 @@ final class Charge extends \Dfe\Vantiv\T\CaseT {
 		$this->req('live'), 'https://payments.vantivcnp.com/vap/communicator/online'
 	);}
 
-	/** 2018-12-18 */
+	/** @test 2018-12-18 */
 	function t02() {echo $this->curl(
 		$this->doc(), 'https://payments.vantivprelive.com/vap/communicator/online'
 	);}
