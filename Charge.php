@@ -178,7 +178,12 @@ final class Charge extends \Df\Payment\Charge {
 							// 2018-12-20
 							// We need to chop the string to 24 symbols,
 							// because Vantiv treats the … Unicode symbol as 3 symbols.
-							,'itemDescription' => df_chop($i->getName(), 24)
+							// 2019-01-28
+							// It seems that Vantiv sometimes fails with the … Unicode symbol at all:
+							// https://www.upwork.com/messages/rooms/room_a47917c5cb842618a58747d62e02deee/story_18b0527e26fb4095099b2771f9b9802f
+							// So I stoped using this symbol at all.
+							// Now I afraid to use mb_substr() for the same reason too, so I use substr().
+							,'itemDescription' => substr($i->getName(), 26)
 							// 2018-12-19
 							// «The productCode element is an optional child of the lineItemData element,
 							// which specifies the product code of the purchased item.
