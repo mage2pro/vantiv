@@ -22,7 +22,7 @@ final class Client extends \Df\API\Client {
 		]]);
 		$this->addFilterResBV(function($x) {
 			$a = df_xml_parse_a($x); /** @var array(string => mixed) $a */
-			return dfa($a, 'authorizationResponse', dfa($a, 'saleResponse'));
+			return dfa_seq($a, ['authorizationResponse', 'saleResponse', '@']);
 		});
 	}
 
