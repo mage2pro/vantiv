@@ -193,7 +193,7 @@ final class Charge extends \Df\Payment\Charge {
 							// Although an optional element,
 							// it is required by Visa and MasterCard when specifying line item data.
 							// Type = String; minLength = 1; maxLength = 12»
-							,'productCode' => $i->getSku()
+							,'productCode' => substr($i->getSku(), 0, 12)
 							// 2018-12-19
 							// «The quantity element is an optional child of the lineItemData element,
 							// which specifies the number of items purchased.
