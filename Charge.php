@@ -163,7 +163,7 @@ final class Charge extends \Df\Payment\Charge {
 						// used to define information concerning individual items in the order.
 						// Although the schema defines it as an optional child of the enhancedData element,
 						// it is required for Level III interchange rates.»
-						,'lineItemData' => array_values($this->oiLeafs(function(OI $i) use(&$liIndex) {return [
+						,'lineItemData' => array_values($this->oiLeafs(function(OI $i) use(&$liIndex) {xdebug_break(); return [
 							// 2018-12-19
 							// «The itemSequenceNumber element is an optional child of the lineItemData element
 							// (required for Visa transactions).
@@ -183,7 +183,7 @@ final class Charge extends \Df\Payment\Charge {
 							// https://www.upwork.com/messages/rooms/room_a47917c5cb842618a58747d62e02deee/story_18b0527e26fb4095099b2771f9b9802f
 							// So I stoped using this symbol at all.
 							// Now I afraid to use mb_substr() for the same reason too, so I use substr().
-							,'itemDescription' => substr($i->getName(), 26)
+							,'itemDescription' => substr($i->getName(), 0, 26)
 							// 2018-12-19
 							// «The productCode element is an optional child of the lineItemData element,
 							// which specifies the product code of the purchased item.
