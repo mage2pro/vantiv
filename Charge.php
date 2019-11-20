@@ -238,7 +238,7 @@ final class Charge extends \Df\Payment\Charge {
 							// The value must be greater than or equal to 0.
 							// The decimal is implied. Example: 500 = $5.00.
 							// Type = Integer; totalDigits = 8»
-							,'itemDiscountAmount' => $this->cFromDocF($i->getDiscountAmount())
+							,'itemDiscountAmount' => $this->cFromDocF(df_oqi_discount($i))
 							// 2018-12-19
 							// «The unitCost element is an optional child of the lineItemData element,
 							// which specifies the price of one unit of the item purchased.
