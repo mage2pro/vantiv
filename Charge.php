@@ -212,7 +212,7 @@ final class Charge extends \Df\Payment\Charge {
 							// NOTE: If you include taxAmount as a child of lineItemData along with detailTax,
 							// the lineItemData taxAmount should be the sum of the taxAmount children
 							// from detailTax children.»
-							,'taxAmount' => $this->cFromDocF($i->getTaxAmount())
+							,'taxAmount' => $this->cFromDocF(df_oqi_tax($i))
 							// 2018-12-19
 							// «The lineItemTotal element is an optional child of the lineItemData element,
 							// which specifies the total cost of the line items purchased, not including tax.
