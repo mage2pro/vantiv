@@ -1,6 +1,5 @@
 <?php
 namespace Dfe\Vantiv\API;
-use Df\Core\Exception as DFE;
 /**
  * 2018-12-18
  * 2018-12-19
