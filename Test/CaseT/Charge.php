@@ -1,10 +1,10 @@
 <?php
-namespace Dfe\Vantiv\T\CaseT;
+namespace Dfe\Vantiv\Test\CaseT;
 use Df\Payment\BankCardNetworkDetector as D;
 use Df\Xml\G;
 use Dfe\Vantiv\API\Facade as F;
 // 2018-12-17
-final class Charge extends \Dfe\Vantiv\T\CaseT {
+final class Charge extends \Dfe\Vantiv\Test\CaseT {
 	/** 2018-12-17 */
 	function t00() {echo __METHOD__;}
 

@@ -1,8 +1,8 @@
 <?php
-namespace Dfe\Vantiv\T;
+namespace Dfe\Vantiv\Test;
 /**
  * 2018-12-17
- * @see \Dfe\Vantiv\T\CaseT\Charge
+ * @see \Dfe\Vantiv\Test\CaseT\Charge
  * @method \Dfe\Vantiv\Method m()
  * @method \Dfe\Vantiv\Settings s()
  */
