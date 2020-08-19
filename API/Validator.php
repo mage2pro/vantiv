@@ -1,6 +1,6 @@
 <?php
 namespace Dfe\Vantiv\API;
-// 2018-12-19
+# 2018-12-19
 /** @used-by \Dfe\Vantiv\API\Client::responseValidatorC() */
 final class Validator extends \Df\API\Response\Validator {
 	/**

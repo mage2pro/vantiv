@@ -2,7 +2,7 @@
 namespace Dfe\Vantiv;
 use Dfe\Vantiv\Facade\Card;
 use Magento\Sales\Model\Order\Payment\Transaction as T;
-// 2018-12-17
+# 2018-12-17
 /** @method Settings s() */
 final class Method extends \Df\StripeClone\Method {
 	/**

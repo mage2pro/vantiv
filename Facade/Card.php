@@ -2,7 +2,7 @@
 namespace Dfe\Vantiv\Facade;
 use Df\Payment\BankCardNetworkDetector as D;
 use Dfe\Vantiv\Method as M;
-// 2018-12-19
+# 2018-12-19
 final class Card extends \Df\StripeClone\Facade\Card {
 	/**
 	 * 2018-12-19

@@ -1,7 +1,7 @@
 <?php
 namespace Dfe\Vantiv;
 use Df\Payment\Settings\Proxy;
-// 2018-12-17
+# 2018-12-17
 /** @method static Settings s() */
 final class Settings extends \Df\StripeClone\Settings {
 	/**

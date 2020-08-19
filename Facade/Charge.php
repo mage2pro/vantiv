@@ -3,7 +3,7 @@ namespace Dfe\Vantiv\Facade;
 use Df\API\Operation;
 use Df\Xml\X;
 use Dfe\Vantiv\API\Facade as F;
-// 2018-12-18
+# 2018-12-18
 /** @method \Dfe\Vantiv\Method m() */
 final class Charge extends \Df\StripeClone\Facade\Charge {
 	/**

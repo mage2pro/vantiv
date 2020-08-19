@@ -3,7 +3,7 @@ namespace Dfe\Vantiv\API;
 use Df\Payment\Settings\Proxy;
 use Df\Xml\G;
 use Dfe\Vantiv\Settings as S;
-// 2018-12-18
+# 2018-12-18
 final class Client extends \Df\API\Client {
 	/**
 	 * 2018-12-18

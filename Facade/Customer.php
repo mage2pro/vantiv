@@ -1,6 +1,6 @@
 <?php
 namespace Dfe\Vantiv\Facade;
-// 2018-12-18
+# 2018-12-18
 /** @method \Dfe\Vantiv\Settings ss() */
 final class Customer extends \Df\StripeClone\Facade\Customer {
 	/**
