@@ -15,7 +15,6 @@ final class Facade extends \Df\API\Facade {
 	 * @used-by \Df\API\Facade::p()
 	 * @param int|string|null $id
 	 * @param string|null $suffix
-	 * @return string
 	 */
-	protected function path($id, $suffix) {return '';}
+	protected function path($id, $suffix):string {return '';}
 }

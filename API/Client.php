@@ -34,7 +34,7 @@ final class Client extends \Df\API\Client {
 	 * @used-by \Df\API\Client::_p()
 	 * @return array(string => string)
 	 */
-	protected function headers() {return ['Content-Type' => 'text/xml'];}
+	protected function headers():array {return ['Content-Type' => 'text/xml'];}
 
 	/**
 	 * 2019-01-18
@@ -54,9 +54,8 @@ final class Client extends \Df\API\Client {
 	 * @override
 	 * @see \Df\API\Client::responseValidatorC()
 	 * @used-by \Df\API\Client::_p()
-	 * @return string
 	 */
-	protected function responseValidatorC() {return \Dfe\Vantiv\API\Validator::class;}
+	protected function responseValidatorC():string {return \Dfe\Vantiv\API\Validator::class;}
 
 	/**
 	 * 2018-12-18
@@ -64,9 +63,8 @@ final class Client extends \Df\API\Client {
 	 * @see \Df\API\Client::urlBase()
 	 * @used-by \Df\API\Client::__construct()
 	 * @used-by \Df\API\Client::url()
-	 * @return string
 	 */
-	protected function urlBase() {return dfp_url_api(
+	protected function urlBase():string {return dfp_url_api(
 		$this, 'https://payments.vantiv{stage}.com/vap/communicator/online', ['prelive', 'cnp']
 	);}
 
@@ -79,5 +77,5 @@ final class Client extends \Df\API\Client {
 	 * @used-by \Df\API\Client::__construct()
 	 * @return array(string => mixed)
 	 */
-	protected function zfConfig() {return ['ssltransport' => 'tlsv1.2'];}
+	protected function zfConfig():array {return ['ssltransport' => 'tlsv1.2'];}
 }

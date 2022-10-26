@@ -9,7 +9,7 @@ final class Environment extends \Df\Config\Source {
 	 * @used-by \Df\Config\Source::toOptionArray()
 	 * @return array(string => string)
 	 */
-	protected function map() {return [self::$PRE_LIVE => 'Pre-Live', self::$PRODUCTION => 'Production'];}
+	protected function map():array {return [self::$PRE_LIVE => 'Pre-Live', self::$PRODUCTION => 'Production'];}
 
 	/**
 	 * 2018-12-17
