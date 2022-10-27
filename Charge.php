@@ -13,7 +13,7 @@ use Magento\Sales\Model\Order\Item as OI;
 final class Charge extends \Df\Payment\Charge {
 	/**
 	 * 2018-12-19
-	 * @used-by p()
+	 * @used-by self::p()
 	 * @return array(string => mixed)
 	 */
 	private function pCharge() {

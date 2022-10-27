@@ -54,7 +54,7 @@ final class Card extends \Df\StripeClone\Facade\Card {
 
 	/**
 	 * 2018-12-19
-	 * @used-by expMonth()
+	 * @used-by self::expMonth()
 	 * @used-by \Dfe\Vantiv\Charge::pCharge()
 	 * @return string
 	 */
@@ -72,7 +72,7 @@ final class Card extends \Df\StripeClone\Facade\Card {
 
 	/**
 	 * 2018-12-19
-	 * @used-by expYear()
+	 * @used-by self::expYear()
 	 * @used-by \Dfe\Vantiv\Charge::pCharge()
 	 * @return string
 	 */
@@ -98,8 +98,8 @@ final class Card extends \Df\StripeClone\Facade\Card {
 
 	/**
 	 * 2018-12-19
-	 * @used-by brandCode()
-	 * @used-by last4()
+	 * @used-by self::brandCode()
+	 * @used-by self::last4()
 	 * @used-by \Dfe\Vantiv\Charge::pCharge()
 	 * @return string
 	 */
@@ -115,15 +115,15 @@ final class Card extends \Df\StripeClone\Facade\Card {
 
 	/**
 	 * 2018-12-19
-	 * @used-by brand()
-	 * @used-by brandCodeE()
+	 * @used-by self::brand()
+	 * @used-by self::brandCodeE()
 	 * @return string|null
 	 */
 	private function brandCode() {return D::p($this->number());}
 
 	/**
 	 * 2018-12-19
-	 * @used-by __construct()
+	 * @used-by self::__construct()
 	 * @var array(string => string)
 	 */
 	private $_p;

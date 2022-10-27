@@ -56,32 +56,32 @@ final class Method extends \Df\StripeClone\Method {
 
 	/**
 	 * 2018-12-17
-	 * @used-by card()
-	 * @used-by iiaKeys()
+	 * @used-by self::card()
+	 * @used-by self::iiaKeys()
 	 * @used-by \Dfe\Vantiv\Facade\Card::cvc()
 	 */
 	const C_CVC = 'c_cvc';
 
 	/**
 	 * 2018-12-17
-	 * @used-by card()
-	 * @used-by iiaKeys()
+	 * @used-by self::ard()
+	 * @used-by self::iiaKeys()
 	 * @used-by \Dfe\Vantiv\Facade\Card::expMonth()
 	 */
 	const C_EXP_MONTH = 'c_exp_month';
 
 	/**
 	 * 2018-12-17
-	 * @used-by card()
-	 * @used-by iiaKeys()
+	 * @used-by self::card()
+	 * @used-by self::iiaKeys()
 	 * @used-by \Dfe\Vantiv\Facade\Card::expYear()
 	 */
 	const C_EXP_YEAR = 'c_exp_year';
 
 	/**
 	 * 2018-12-17
-	 * @used-by card()
-	 * @used-by iiaKeys()
+	 * @used-by self::card()
+	 * @used-by self::iiaKeys()
 	 * @used-by \Dfe\Vantiv\Facade\Card::number()
 	 */
 	const C_NUMBER = 'c_number';

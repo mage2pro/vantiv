@@ -37,8 +37,8 @@ final class Charge extends \Dfe\Vantiv\Test\CaseT {
 
 	/**
 	 * 2018-12-18
-	 * @used-by t01()
-	 * @used-by t02()
+	 * @used-by self::t01()
+	 * @used-by self::t02()
 	 * @param string $req
 	 * @param string $url
 	 * @return string
@@ -67,7 +67,7 @@ final class Charge extends \Dfe\Vantiv\Test\CaseT {
 
 	/**
 	 * 2018-12-18
-	 * @used-by doc()
+	 * @used-by self::doc()
 	 * @param string $type [optional]
 	 * @param bool $capture [optional]
 	 * @return array(string => mixed)
@@ -128,7 +128,7 @@ final class Charge extends \Dfe\Vantiv\Test\CaseT {
 
 	/**
 	 * 2018-12-18
-	 * @used-by req()
+	 * @used-by self::req()
 	 * @param string $path
 	 * @return array(string => string)
 	 */
@@ -136,8 +136,8 @@ final class Charge extends \Dfe\Vantiv\Test\CaseT {
 
 	/**
 	 * 2018-12-18
-	 * @used-by t01()
-	 * @used-by t02()
+	 * @used-by self::t01()
+	 * @used-by self::t02()
 	 * @param string $type
 	 * @return string
 	 */
@@ -164,7 +164,7 @@ final class Charge extends \Dfe\Vantiv\Test\CaseT {
 
 	/**
 	 * 2018-12-18
-	 * @used-by req()
+	 * @used-by self::req()
 	 * @param string $t
 	 * @return string
 	 */
