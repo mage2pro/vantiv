@@ -33,7 +33,7 @@ final class Method extends \Df\StripeClone\Method {
 	 * @param bool $capture
 	 * @return array(string => mixed)
 	 */
-	protected function chargeNewParams($capture) {return Charge::p($this);}
+	protected function chargeNewParams($capture):array {return Charge::p($this);}
 
 	/**
 	 * 2018-12-17
@@ -42,7 +42,7 @@ final class Method extends \Df\StripeClone\Method {
 	 * @used-by \Df\Payment\Method::assignData()
 	 * @return string[]
 	 */
-	protected function iiaKeys() {return [self::C_CVC, self::C_EXP_MONTH, self::C_EXP_YEAR, self::C_NUMBER];}
+	protected function iiaKeys():array {return [self::C_CVC, self::C_EXP_MONTH, self::C_EXP_YEAR, self::C_NUMBER];}
 
 	/**
 	 * 2018-12-17
@@ -50,9 +50,8 @@ final class Method extends \Df\StripeClone\Method {
 	 * @see \Df\StripeClone\Method::transUrlBase()
 	 * @used-by \Df\StripeClone\Method::transUrl()
 	 * @param T $t
-	 * @return string
 	 */
-	protected function transUrlBase(T $t) {return '';}
+	protected function transUrlBase(T $t):string {return '';}
 
 	/**
 	 * 2018-12-17

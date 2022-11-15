@@ -13,7 +13,6 @@ class Info extends \Df\StripeClone\Block\Info {
 	 * @override
 	 * @see \Df\StripeClone\Block\Info::card()
 	 * @used-by \Df\StripeClone\Block\Info::cf()
-	 * @return Card
 	 */
-	protected function card() {return $this->m()->card();}
+	protected function card():Card {return $this->m()->card();}
 }

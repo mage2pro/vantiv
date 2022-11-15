@@ -5,31 +5,40 @@ namespace Dfe\Vantiv\Facade;
 final class Customer extends \Df\StripeClone\Facade\Customer {
 	/**
 	 * 2018-12-18
+	 * 2022-11-13
+	 * It is never used because the Vantiv module does not use @see \Df\StripeClone\Payer::newCard()
+	 * It is similar to @see \Dfe\TBCBank\Facade\Customer::cardAdd()
 	 * @override
 	 * @see \Df\StripeClone\Facade\Customer::cardAdd()
+	 * @used-by \Df\StripeClone\Payer::newCard()
 	 * @param object $c
-	 * @param string $token
-	 * @return null
 	 */
-	function cardAdd($c, $token) {return null;}
+	function cardAdd($c, string $token):string {df_should_not_be_here(); return '';}
 
 	/**
 	 * 2018-12-18
+	 * 2022-11-13
+	 * It is never used because the Vantiv module does not use @see \Df\StripeClone\Payer::newCard()
+	 * It is similar to @see \Dfe\TBCBank\Facade\Customer::create()
 	 * @override
 	 * @see \Df\StripeClone\Facade\Customer::create()
+	 * @used-by \Df\StripeClone\Payer::newCard()
 	 * @param array(string => mixed) $p
 	 * @return null
 	 */
-	function create(array $p) {return null;}
+	function create(array $p) {df_should_not_be_here(); return null;}
 
 	/**
 	 * 2018-12-18
+	 * 2022-11-13
+	 * It is never used because the Vantiv module does not use @see \Df\StripeClone\Payer::newCard()
+	 * It is similar to @see \Dfe\TBCBank\Facade\Customer::id()
 	 * @override
 	 * @see \Df\StripeClone\Facade\Customer::id()
+	 * @used-by \Df\StripeClone\Payer::newCard()
 	 * @param object $c
-	 * @return null
 	 */
-	function id($c) {return null;}
+	function id($c):string {df_should_not_be_here(); return '';}
 
 	/**
 	 * 2018-12-18

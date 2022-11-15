@@ -1,7 +1,6 @@
 <?php
 namespace Dfe\Vantiv\API;
 use Df\Payment\Settings\Proxy;
-use Df\Xml\G;
 use Dfe\Vantiv\Settings as S;
 # 2018-12-18
 final class Client extends \Df\API\Client {
@@ -14,12 +13,12 @@ final class Client extends \Df\API\Client {
 	protected function _construct() {
 		parent::_construct();
 		$s = dfps($this); /** @var S $s */
-		$this->reqXml('litleOnlineRequest', [G::P__ATTRIBUTES => [
+		$this->reqXml('litleOnlineRequest', [
 			'merchantId' => $s->merchantID()
 			,'merchantSdk' => 'Magento;8.15.6'
 			,'version' => '8.23'
 			,'xmlns' => 'http://www.litle.com/schema'
-		]]);
+		]);
 		$this->addFilterResBV(function($x) {
 			$a = df_xml_parse_a($x); /** @var array(string => mixed) $a */
 			return dfa_seq($a, ['authorizationResponse', 'saleResponse', '@']);

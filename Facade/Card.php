@@ -15,9 +15,10 @@ final class Card extends \Df\StripeClone\Facade\Card {
 	 * 2018-12-19
 	 * @override
 	 * @see \Df\StripeClone\Facade\Card::brand()
-	 * @return null
+	 * @used-by \Df\StripeClone\CardFormatter::ii()
+	 * @used-by \Df\StripeClone\CardFormatter::label()
 	 */
-	function brand() {return D::label($this->brandCode());}
+	function brand():string {return D::label($this->brandCode());}
 
 	/**
 	 * 2018-12-19
@@ -32,6 +33,7 @@ final class Card extends \Df\StripeClone\Facade\Card {
 	 * 2018-12-19
 	 * @override
 	 * @see \Df\StripeClone\Facade\Card::country()
+	 * @used-by \Df\StripeClone\CardFormatter::country()
 	 * @return null
 	 */
 	function country() {return null;}
@@ -48,9 +50,8 @@ final class Card extends \Df\StripeClone\Facade\Card {
 	 * @see \Df\StripeClone\Facade\Card::expMonth()
 	 * @used-by \Df\StripeClone\CardFormatter::exp()
 	 * @used-by \Df\StripeClone\Facade\Card::isActive()
-	 * @return int|null
 	 */
-	function expMonth() {return intval($this->expMonth2());}
+	function expMonth():int {return intval($this->expMonth2());}
 
 	/**
 	 * 2018-12-19
@@ -65,10 +66,10 @@ final class Card extends \Df\StripeClone\Facade\Card {
 	 * @override
 	 * @see \Df\StripeClone\Facade\Card::expYear()
 	 * @used-by \Df\StripeClone\CardFormatter::exp()
+	 * @used-by \Df\StripeClone\CardFormatter::ii()
 	 * @used-by \Df\StripeClone\Facade\Card::isActive()
-	 * @return int|null
 	 */
-	function expYear() {return 2000 + intval($this->expYear2());}
+	function expYear():int {return 2000 + intval($this->expYear2());}
 
 	/**
 	 * 2018-12-19
@@ -84,7 +85,7 @@ final class Card extends \Df\StripeClone\Facade\Card {
 	 * @see \Df\StripeClone\Facade\Card::id()
 	 * @used-by \Df\StripeClone\ConfigProvider::cards()
 	 * @used-by \Df\StripeClone\Facade\Customer::cardIdForJustCreated()
-	 * @return string
+	 * @return null
 	 */
 	function id() {return null;}
 
@@ -92,9 +93,10 @@ final class Card extends \Df\StripeClone\Facade\Card {
 	 * 2018-12-19
 	 * @override
 	 * @see \Df\StripeClone\Facade\Card::last4()
-	 * @return string
+	 * @used-by \Df\StripeClone\CardFormatter::ii()
+	 * @used-by \Df\StripeClone\CardFormatter::label()
 	 */
-	function last4() {return substr($this->number(), -4);}
+	function last4():string {return substr($this->number(), -4);}
 
 	/**
 	 * 2018-12-19
@@ -109,6 +111,7 @@ final class Card extends \Df\StripeClone\Facade\Card {
 	 * 2018-12-19
 	 * @override
 	 * @see \Df\StripeClone\Facade\Card::owner()
+	 * @used-by \Df\StripeClone\CardFormatter::ii()
 	 * @return null
 	 */
 	function owner() {return null;}

@@ -1,7 +1,6 @@
 <?php
 namespace Dfe\Vantiv\Test\CaseT;
 use Df\Payment\BankCardNetworkDetector as D;
-use Df\Xml\G;
 use Dfe\Vantiv\API\Facade as F;
 # 2018-12-17
 final class Charge extends \Dfe\Vantiv\Test\CaseT {
@@ -58,12 +57,12 @@ final class Charge extends \Dfe\Vantiv\Test\CaseT {
 	}
 
 	/** 2018-12-18 */
-	private function doc() {return df_xml_g('litleOnlineRequest', $this->docBody(), [G::P__ATTRIBUTES => [
+	private function doc() {return df_xml_g('litleOnlineRequest', $this->docBody(), [
 		'merchantId' => $this->s()->merchantID()
 		,'merchantSdk' => 'Magento;8.15.6'
 		,'version' => '8.23'
 		,'xmlns' => 'http://www.litle.com/schema'
-	]]);}
+	]);}
 
 	/**
 	 * 2018-12-18

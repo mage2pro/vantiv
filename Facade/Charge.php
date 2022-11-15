@@ -14,7 +14,7 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	 * @param string $id
 	 * @param int|float $a
 	 * The $a value is already converted to the PSP currency and formatted according to the PSP requirements.
-	 * @return Operation
+	 * @return null
 	 */
 	function capturePreauthorized($id, $a) {return null;}
 
@@ -24,9 +24,8 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	 * @see \Df\StripeClone\Facade\Charge::card()
 	 * @used-by \Df\StripeClone\Method::chargeNew()
 	 * @param object|array(string => mixed) $c
-	 * @return Card
 	 */
-	function card($c) {return $this->m()->card();}
+	function card($c):Card {return $this->m()->card();}
 
 	/**
 	 * 2018-12-19
@@ -34,9 +33,8 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	 * @see \Df\StripeClone\Facade\Charge::create()
 	 * @used-by \Df\StripeClone\Method::chargeNew()
 	 * @param array(string => mixed) $p
-	 * @return Operation
 	 */
-	function create(array $p) {return F::s()->post($p);}
+	function create(array $p):Operation {return F::s()->post($p);}
 
 	/**
 	 * 2018-12-19 A string like «82924704471941425»
@@ -44,9 +42,8 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	 * @see \Df\StripeClone\Facade\Charge::id()
 	 * @used-by \Df\StripeClone\Method::chargeNew()
 	 * @param Operation $c
-	 * @return string
 	 */
-	function id($c) {return $c['litleTxnId'];}
+	function id($c):string {return $c['litleTxnId'];}
 
 	/**
 	 * 2018-12-18
