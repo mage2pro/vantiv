@@ -40,9 +40,8 @@ final class Card extends \Df\StripeClone\Facade\Card {
 
 	/**
 	 * 2018-12-19
-	 * @return string
 	 */
-	function cvc() {return dfa($this->_p, M::C_CVC);}
+	function cvc():string {return dfa($this->_p, M::C_CVC);}
 
 	/**
 	 * 2018-12-19
