@@ -10,9 +10,8 @@ final class Method extends \Df\StripeClone\Method {
 	 * @used-by \Dfe\Vantiv\Block\Info::card()
 	 * @used-by \Dfe\Vantiv\Charge::pCharge()
 	 * @used-by \Dfe\Vantiv\Facade\Charge::card()
-	 * @return Card
 	 */
-	function card() {return dfc($this, function() {return Card::create($this, $this->iia(
+	function card():Card {return dfc($this, function() {return Card::create($this, $this->iia(
 		self::C_CVC, self::C_EXP_MONTH, self::C_EXP_YEAR, self::C_NUMBER
 	));});}
 
