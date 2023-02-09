@@ -50,7 +50,7 @@ final class Charge extends \Dfe\Vantiv\Test\CaseT {
 	}
 
 	/** 2018-12-18 */
-	private function doc() {return df_xml_g('litleOnlineRequest', $this->docBody(), [
+	private function doc():string {return df_xml_g('litleOnlineRequest', $this->docBody(), [
 		'merchantId' => $this->s()->merchantID()
 		,'merchantSdk' => 'Magento;8.15.6'
 		,'version' => '8.23'
