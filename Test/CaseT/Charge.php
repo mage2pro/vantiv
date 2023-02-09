@@ -130,7 +130,7 @@ final class Charge extends \Dfe\Vantiv\Test\CaseT {
 	 * @param string $type
 	 * @return string
 	 */
-	private function req($type) {
+	private function req(string $type) {
 		$card = $this->j("$type/card");
 		$cred = $this->j("$type/credentials");
 		return strtr(df_contents(df_module_dir($this) . '/T/data/request.xml'), [
