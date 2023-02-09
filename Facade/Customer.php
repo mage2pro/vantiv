@@ -66,5 +66,5 @@ final class Customer extends \Df\StripeClone\Facade\Customer {
 	 * @return \Dfe\Vantiv\Facade\Card[]
 	 * @see \Dfe\Stripe\Facade\Charge::cardData()
 	 */
-	protected function cardsData($c) {return [];}
+	protected function cardsData($c):array {return [];}
 }
