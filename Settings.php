@@ -7,7 +7,6 @@ final class Settings extends \Df\StripeClone\Settings {
 	/**
 	 * 2019-01-18
 	 * @used-by \Dfe\Vantiv\API\Client::proxy()
-	 * @return Proxy
 	 */
-	function proxy() {return dfc($this, function() {return new Proxy($this->m());});}
+	function proxy():Proxy {return dfc($this, function() {return new Proxy($this->m());});}
 }
