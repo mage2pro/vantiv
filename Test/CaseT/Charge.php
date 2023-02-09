@@ -121,7 +121,7 @@ final class Charge extends \Dfe\Vantiv\Test\CaseT {
 	 * @used-by self::req()
 	 * @return array(string => string)
 	 */
-	private function j(string $path) {return df_json_file_read(BP . "/_my/test/Vantiv/$path.json");}
+	private function j(string $path):array {return df_json_file_read(BP . "/_my/test/Vantiv/$path.json");}
 
 	/**
 	 * 2018-12-18
