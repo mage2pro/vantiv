@@ -29,10 +29,9 @@ final class Method extends \Df\StripeClone\Method {
 	 * @override
 	 * @see \Df\StripeClone\Method::chargeNewParams()
 	 * @used-by \Df\StripeClone\Method::chargeNew()
-	 * @param bool $capture
 	 * @return array(string => mixed)
 	 */
-	protected function chargeNewParams($capture):array {return Charge::p($this);}
+	protected function chargeNewParams(bool $capture):array {return Charge::p($this);}
 
 	/**
 	 * 2018-12-17
