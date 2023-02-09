@@ -34,11 +34,9 @@ final class Charge extends \Dfe\Vantiv\Test\CaseT {
 	 * 2018-12-18
 	 * @used-by self::t01()
 	 * @used-by self::t02()
-	 * @param string $req
-	 * @param string $url
 	 * @return string
 	 */
-	private function curl($req, $url) {
+	private function curl(string $req, string $url) {
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_POST, true);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-type: text/xml','Expect: ']);
