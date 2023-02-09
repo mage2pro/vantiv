@@ -60,11 +60,10 @@ final class Charge extends \Dfe\Vantiv\Test\CaseT {
 	/**
 	 * 2018-12-18
 	 * @used-by self::doc()
-	 * @param string $type [optional]
 	 * @param bool $capture [optional]
 	 * @return array(string => mixed)
 	 */
-	private function docBody($type = 'success', $capture = false) {
+	private function docBody(string $type = 'success', $capture = false) {
 		$card = $this->j("test/card/$type");
 		$s = $this->s();
 		$oid = 12345;//df_uid(10);
