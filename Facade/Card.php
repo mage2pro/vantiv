@@ -101,9 +101,8 @@ final class Card extends \Df\StripeClone\Facade\Card {
 	 * @used-by self::brandCode()
 	 * @used-by self::last4()
 	 * @used-by \Dfe\Vantiv\Charge::pCharge()
-	 * @return string
 	 */
-	function number() {return dfa($this->_p, M::C_NUMBER);}
+	function number():string {return dfa($this->_p, M::C_NUMBER);}
 
 	/**
 	 * 2018-12-19
