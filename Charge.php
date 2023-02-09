@@ -259,5 +259,5 @@ final class Charge extends \Df\Payment\Charge {
 	 * @used-by \Dfe\Vantiv\Method::chargeNewParams()
 	 * @return array(string => mixed)
 	 */
-	static function p(Method $m = null) {return (new self($m ?: dfpm(__CLASS__)))->pCharge();}
+	static function p(Method $m = null):array {return (new self($m ?: dfpm(__CLASS__)))->pCharge();}
 }
