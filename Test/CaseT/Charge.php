@@ -127,7 +127,6 @@ final class Charge extends \Dfe\Vantiv\Test\CaseT {
 	 * 2018-12-18
 	 * @used-by self::t01()
 	 * @used-by self::t02()
-	 * @param string $type
 	 * @return string
 	 */
 	private function req(string $type) {
