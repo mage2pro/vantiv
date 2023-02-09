@@ -40,6 +40,7 @@ final class Card extends \Df\StripeClone\Facade\Card {
 
 	/**
 	 * 2018-12-19
+	 * @used-by \Dfe\Vantiv\Charge::pCharge()
 	 */
 	function cvc():string {return dfa($this->_p, M::C_CVC);}
 
@@ -56,9 +57,8 @@ final class Card extends \Df\StripeClone\Facade\Card {
 	 * 2018-12-19
 	 * @used-by self::expMonth()
 	 * @used-by \Dfe\Vantiv\Charge::pCharge()
-	 * @return string
 	 */
-	function expMonth2() {return dfa($this->_p, M::C_EXP_MONTH);}
+	function expMonth2():string {return dfa($this->_p, M::C_EXP_MONTH);}
 
 	/**
 	 * 2018-12-19
