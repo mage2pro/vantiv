@@ -5,30 +5,30 @@ use Dfe\Vantiv\API\Facade as F;
 # 2018-12-17
 final class Charge extends \Dfe\Vantiv\Test\CaseT {
 	/** 2018-12-17 */
-	function t00() {echo __METHOD__;}
+	function t00():array {echo __METHOD__;}
 
 	/** 2018-12-18 */
-	function t01() {echo $this->curl($this->req('live'), 'https://payments.vantivcnp.com/vap/communicator/online');}
+	function t01():array {echo $this->curl($this->req('live'), 'https://payments.vantivcnp.com/vap/communicator/online');}
 
 	/** 2018-12-18 @test */
-	function t02() {echo $this->curl($this->doc(), 'https://payments.vantivprelive.com/vap/communicator/online');}
+	function t02():array {echo $this->curl($this->doc(), 'https://payments.vantivprelive.com/vap/communicator/online');}
 
 	/** 2018-12-18 */
-	function t03() {$s = $this->s(); echo df_json_encode([
+	function t03():array {$s = $this->s(); echo df_json_encode([
 		'merchantID' => $s->merchantID(), 'privateKey' => $s->privateKey(), 'publicKey' => $s->publicKey()
 	]);}
 
 	/** 2018-12-18 */
-	function t04() {echo $this->doc();}
+	function t04():array {echo $this->doc();}
 
 	/** 2018-12-18 */
-	function t05() {echo df_json_encode(F::s()->post($this->docBody())->a());}
+	function t05():array {echo df_json_encode(F::s()->post($this->docBody())->a());}
 
 	/** 2018-12-19 */
-	function t06() {echo df_json_encode(F::s()->post($this->docBody('failure'))->a());}
+	function t06():array {echo df_json_encode(F::s()->post($this->docBody('failure'))->a());}
 
 	/** 2018-12-18 @test */
-	function t07() {echo df_json_encode(F::s()->post($this->docBody('success', true))->a());}
+	function t07():array {echo df_json_encode(F::s()->post($this->docBody('success', true))->a());}
 
 	/**
 	 * 2018-12-18
