@@ -8,14 +8,10 @@ final class Charge extends \Dfe\Vantiv\Test\CaseT {
 	function t00() {echo __METHOD__;}
 
 	/** 2018-12-18 */
-	function t01() {echo $this->curl(
-		$this->req('live'), 'https://payments.vantivcnp.com/vap/communicator/online'
-	);}
+	function t01() {echo $this->curl($this->req('live'), 'https://payments.vantivcnp.com/vap/communicator/online');}
 
-	/** @test 2018-12-18 */
-	function t02() {echo $this->curl(
-		$this->doc(), 'https://payments.vantivprelive.com/vap/communicator/online'
-	);}
+	/** 2018-12-18 @test */
+	function t02() {echo $this->curl($this->doc(), 'https://payments.vantivprelive.com/vap/communicator/online');}
 
 	/** 2018-12-18 */
 	function t03() {$s = $this->s(); echo df_json_encode([
@@ -31,7 +27,7 @@ final class Charge extends \Dfe\Vantiv\Test\CaseT {
 	/** 2018-12-19 */
 	function t06() {echo df_json_encode(F::s()->post($this->docBody('failure'))->a());}
 
-	/** @test 2018-12-18 */
+	/** 2018-12-18 @test */
 	function t07() {echo df_json_encode(F::s()->post($this->docBody('success', true))->a());}
 
 	/**
@@ -143,7 +139,7 @@ final class Charge extends \Dfe\Vantiv\Test\CaseT {
 	private function req($type) {
 		$card = $this->j("$type/card");
 		$cred = $this->j("$type/credentials");
-		return strtr(file_get_contents(df_module_dir($this) . '/T/data/request.xml'), [
+		return strtr(df_contents(df_module_dir($this) . '/T/data/request.xml'), [
 			'%c_cvc%' => $card['cvc']
 			,'%c_exp%' => $card['exp']
 			,'%c_num%' => $card['num']

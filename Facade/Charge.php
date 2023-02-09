@@ -11,12 +11,11 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	 * @override
 	 * @see \Df\StripeClone\Facade\Charge::capturePreauthorized()
 	 * @used-by \Df\StripeClone\Method::charge()
-	 * @param string $id
 	 * @param int|float $a
 	 * The $a value is already converted to the PSP currency and formatted according to the PSP requirements.
 	 * @return null
 	 */
-	function capturePreauthorized($id, $a) {return null;}
+	function capturePreauthorized(string $id, $a) {return null;}
 
 	/**
 	 * 2018-12-19
@@ -57,23 +56,20 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 
 	/**
 	 * 2018-12-18
+	 * 2022-12-19 The $a value is already converted to the PSP currency and formatted according to the PSP requirements.
 	 * @override
 	 * @see \Df\StripeClone\Facade\Charge::refund()
-	 * @used-by self::void()
 	 * @used-by \Df\StripeClone\Method::_refund()
-	 * @param string $id
-	 * @param float $a В формате и валюте платёжной системы. Значение готово для применения в запросе API.
 	 * @return null
 	 */
-	function refund($id, $a) {return null;}
+	function refund(string $id, int $a) {return null;}
 
 	/**
 	 * 2018-12-18
 	 * @override
 	 * @see \Df\StripeClone\Facade\Charge::void()
 	 * @used-by \Df\StripeClone\Method::_refund()
-	 * @param string $id
 	 * @return null
 	 */
-	function void($id) {return null;}
+	function void(string $id) {return null;}
 }
