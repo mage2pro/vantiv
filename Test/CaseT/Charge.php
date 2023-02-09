@@ -152,10 +152,9 @@ final class Charge extends \Dfe\Vantiv\Test\CaseT {
 	/**
 	 * 2018-12-18
 	 * @used-by self::req()
-	 * @param string $t
 	 * @return string
 	 */
-	private function type($t) {return dftr($t, [
+	private function type(string $t) {return dftr($t, [
 		D::AE => 'AX', D::DN => 'DC', D::DS => 'DI', D::JC => 'JC', D::MC => 'MC', D::VI => 'VI'
 	]);}
 }
