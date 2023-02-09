@@ -16,7 +16,7 @@ final class Charge extends \Df\Payment\Charge {
 	 * @used-by self::p()
 	 * @return array(string => mixed)
 	 */
-	private function pCharge() {
+	private function pCharge():array {
 		$ba = $this->addressB(); /** @var OA $ba */
 		$capture = Action::sg($this->m())->preconfiguredToCapture(); /** @var bool $capture */
 		$m = $this->m(); /** @var Method $m */
