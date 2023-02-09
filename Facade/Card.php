@@ -74,9 +74,8 @@ final class Card extends \Df\StripeClone\Facade\Card {
 	 * 2018-12-19
 	 * @used-by self::expYear()
 	 * @used-by \Dfe\Vantiv\Charge::pCharge()
-	 * @return string
 	 */
-	function expYear2() {return dfa($this->_p, M::C_EXP_YEAR);}
+	function expYear2():string {return dfa($this->_p, M::C_EXP_YEAR);}
 
 	/**
 	 * 2018-12-19
