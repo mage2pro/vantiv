@@ -163,7 +163,7 @@ final class Charge extends \Df\Payment\Charge {
 						# used to define information concerning individual items in the order.
 						# Although the schema defines it as an optional child of the enhancedData element,
 						# it is required for Level III interchange rates.»
-						,'lineItemData' => array_values($this->oiLeafs(function(OI $i) use(&$liIndex) {return [
+						,'lineItemData' => array_values($this->oiLeafs(function(OI $i) use(&$liIndex):array {return [
 							# 2018-12-19
 							# «The itemSequenceNumber element is an optional child of the lineItemData element
 							# (required for Visa transactions).
