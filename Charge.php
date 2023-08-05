@@ -142,7 +142,7 @@ final class Charge extends \Df\Payment\Charge {
 						# «The date the order was placed.
 						# If you do not know the order date, do not include this element.
 						# Type = Date; Format = YYYY-MM-DD»
-						,'orderDate' => df_date()->toString('y-MM-dd')
+						,'orderDate' => df_dts(null, 'y-MM-dd')
 						# 2018-12-19
 						# «The detailTax element is an optional child
 						# of both the enhancedData and lineItemData elements,
