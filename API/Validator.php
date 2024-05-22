@@ -9,7 +9,6 @@ final class Validator extends \Df\API\Response\Validator {
 	 * @see \Df\API\Response\Validator::long()
 	 * @used-by self::valid()
 	 * @used-by \Df\API\Client::_p()
-	 * @used-by \Df\API\Exception::message()
 	 */
 	function long():string {return df_nts($this->r('message'));}
 
