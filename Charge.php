@@ -27,7 +27,7 @@ final class Charge extends \Df\Payment\Charge {
 		$liIndex = 1; /** @var int $liIndex */
 		return [
 			'authentication' => ['user' => $s->publicKey(), 'password' => $s->privateKey()]
-			,df_xml_node($capture ? 'sale' : 'authorization'
+			,df_xml_go($capture ? 'sale' : 'authorization'
 				,['customerId' => $this->customerEmail(), 'reportGroup' => $s->merchantID()]
 				,[
 					# 2018-12-19

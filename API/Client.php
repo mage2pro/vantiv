@@ -20,7 +20,7 @@ final class Client extends \Df\API\Client {
 			,'xmlns' => 'http://www.litle.com/schema'
 		]);
 		$this->addFilterResBV(function($x) {
-			$a = df_xml_parse_a($x); /** @var array(string => mixed) $a */
+			$a = df_xml2a($x); /** @var array(string => mixed) $a */
 			return dfa_try($a, 'authorizationResponse', 'saleResponse', '@');
 		});
 	}

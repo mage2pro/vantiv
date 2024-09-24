@@ -69,7 +69,7 @@ final class Charge extends \Dfe\Vantiv\Test\CaseT {
 		$liIndex = 1;
 		return [
 			'authentication' => ['user' => $s->publicKey(), 'password' => $s->privateKey()]
-			,df_xml_node($capture ? 'sale' : 'authorization'
+			,df_xml_go($capture ? 'sale' : 'authorization'
 				,['customerId' => 'admin@mage2.pro', 'reportGroup' => $s->merchantID()]
 				,[
 					'orderId' => $oid
